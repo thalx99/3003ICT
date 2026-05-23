@@ -2,9 +2,7 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
-// =========================
 // Pin Configuration
-// =========================
 const int SOIL_PIN   = 13;   // D13 - potentiometer signal
 const int LIGHT_PIN  = 5;    // D5  - photoresistor DO
 const int RELAY_PIN  = 14;   // D14 - relay input
@@ -16,9 +14,6 @@ const int DHT_PIN    = 15;   // D15 - DHT22 data
 LiquidCrystal_I2C lcd(0x27, 20, 4);
 DHTesp dhtSensor;
 
-// =========================
-// FSM States
-// =========================
 enum State {
   MONITORING,
   NEED_WATER_CHECK,
@@ -30,9 +25,7 @@ enum State {
 
 State currentState = MONITORING;
 
-// =========================
 // Thresholds / Config
-// =========================
 const int SOIL_DRY_THRESHOLD = 3000;     // Higher = drier
 const int SOIL_WET_THRESHOLD = 2200;     // Lower = wetter enough
 const float MAX_SAFE_TEMP = 40.0;
@@ -42,9 +35,7 @@ const unsigned long WATERING_TIME_MS = 5000;
 const unsigned long POST_WATER_WAIT_MS = 8000;
 const unsigned long SENSOR_CHECK_INTERVAL = 1000;
 
-// =========================
 // Runtime Variables
-// =========================
 unsigned long stateStartTime = 0;
 unsigned long lastLoopTime = 0;
 unsigned long lastLcdUpdate = 0;
@@ -56,9 +47,7 @@ float humidity = 0.0;
 
 bool sensorFault = false;
 
-// =========================
 // Helper Functions
-// =========================
 const char* stateToString(State s) {
   switch (s) {
     case MONITORING:       return "MONITORING";
@@ -223,9 +212,6 @@ void updateLCD() {
   lcd.print("        ");
 }
 
-// =========================
-// Setup
-// =========================
 void setup() {
   Serial.begin(115200);
 
@@ -256,9 +242,6 @@ void setup() {
   setState(MONITORING);
 }
 
-// =========================
-// Main Loop
-// =========================
 void loop() {
   if (millis() - lastLoopTime < SENSOR_CHECK_INTERVAL) {
     updateLCD();
