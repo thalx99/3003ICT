@@ -147,37 +147,19 @@ void beepError() {
 
 void printSensorData() {
   Serial.println("----- Sensor Readings -----");
-  Serial.print("Soil raw: ");
-  Serial.println(soilValue);
 
-  Serial.print("Soil % dry: ");
-  Serial.println(soilPercent());
+  Serial.printf("Soil raw: %d\n", soilValue);
+  Serial.printf("Soild %% dry: %d\n", soilPercent());
+  Serial.printf("Light DO: %d\n", lightValue);
+  Serial.printf("Temperature: %.2f C\n", temperatureC);
+  Serial.printf("Humidity: %.2f %%\n", humidity);
+  Serial.printf("Daytime? %s\n", isDaytime() ? "YES" : "NO");
+  Serial.printf("Soil Dry? %s\n", isSoilDry() ? "YES" : "NO");
+  Serial.printf("Temp Safe? %s\n", isTemperatureSafe() ? "YES" : "NO");
+  Serial.printf("Sensor Fault? %s\n", sensorFault ? "YES" : "NO");
+  Serial.printf("State: %s\n", stateToString(currentState));
 
-  Serial.print("Light DO: ");
-  Serial.println(lightValue);
-
-  Serial.print("Temperature: ");
-  Serial.print(temperatureC);
-  Serial.println(" C");
-
-  Serial.print("Humidity: ");
-  Serial.print(humidity);
-  Serial.println(" %");
-
-  Serial.print("Daytime? ");
-  Serial.println(isDaytime() ? "YES" : "NO");
-
-  Serial.print("Soil Dry? ");
-  Serial.println(isSoilDry() ? "YES" : "NO");
-
-  Serial.print("Temp Safe? ");
-  Serial.println(isTemperatureSafe() ? "YES" : "NO");
-
-  Serial.print("Sensor Fault? ");
-  Serial.println(sensorFault ? "YES" : "NO");
-
-  Serial.print("State: ");
-  Serial.println(stateToString(currentState));
+  Serial.println("---------------------------");
 }
 
 void updateLCD() {
