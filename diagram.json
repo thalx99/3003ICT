@@ -121,7 +121,8 @@
     [ "esp:3V3", "lcd2:VCC", "red", [ "h66.9", "v115.1" ] ],
     [ "lcd2:GND", "esp:GND.1", "black", [ "h-28.8", "v-115.1" ] ],
     [ "esp:D21", "lcd2:SDA", "green", [ "h86.1", "v220.2" ] ],
-    [ "esp:D22", "lcd2:SCL", "green", [ "h95.7", "v258.6" ] ]
+    [ "esp:D22", "lcd2:SCL", "green", [ "h95.7", "v258.6" ] ],
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ], [ "esp:RX0", "$serialMonitor:TX", "", [] ]
   ],
   "dependencies": {}
 }
