@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "author": "OpenAI",
+  "author": "3003ICT",
   "editor": "wokwi",
   "parts": [
     { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -100.9, "left": 91, "attrs": {} },
